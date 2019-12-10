@@ -6,11 +6,14 @@ namespace TryoutPatterns
 {
     interface ICommand
     {
+        string Name { get; }
         void Act();
     }
 
     class Command : ICommand
     {
+        public virtual string Name { get; set; }
+
         public void Act()
         {
             InternalLogic();

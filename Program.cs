@@ -9,10 +9,10 @@ namespace TryoutPatterns
         {
             Console.WriteLine("Hello World!");
 
-            var commands = new Dictionary<ConsoleKey, ICommand>
+            var commands = new Dictionary<int, ICommand>
             {
-                [ConsoleKey.Enter] = new Shout(),
-                [ConsoleKey.LeftArrow] = new PrintMessage()
+                [1] = new Shout { Name = "Oronut' v console"},
+                [2] = new PrintMessage()
             };
 
             var isUndone = true;
