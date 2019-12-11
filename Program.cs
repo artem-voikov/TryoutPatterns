@@ -9,10 +9,13 @@ namespace TryoutPatterns
         {
             Console.WriteLine("Hello World!");
 
-            var commands = new Dictionary<int, ICommand>
+            Gym gym = new Gym();
+
+            var commands = new Dictionary<ConsoleKey, ICommand>
             {
-                [1] = new Shout { Name = "Oronut' v console"},
-                [2] = new PrintMessage()
+                [ConsoleKey.Spacebar] = new ShoutCommand { Name = "Oronut' v console"},
+                [ConsoleKey.Enter] = new PrintMessageCommand(),
+                [ConsoleKey.Tab] = new TrainPeopleCommand(gym),
             };
 
             var isUndone = true;
@@ -22,6 +25,7 @@ namespace TryoutPatterns
                 var key = Console.ReadKey().Key;
                 if (!commands.ContainsKey(key))
                     break;
+
                 var selectedCommand = commands[key];
                 selectedCommand.Act();
             }
